@@ -1,22 +1,31 @@
-function login() {
+const loginForm = document.getElementById("login-form");
+const passwordInput = document.getElementById("password");
+const passwordToggle = document.getElementById("password-toggle");
+const errorMessage = document.getElementById("error-msg");
+
+loginForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
   const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  const password = passwordInput.value;
 
   if (username === "ashwin007" && password === "007ashwin") {
     localStorage.setItem("isLoggedIn", "true");
-    
-    // Replace login page in history so back won't return here
-    location.replace("index.html"); 
-  } else {
-    document.getElementById("error-msg").style.display = "block";
+    location.replace("index.html");
+    return;
   }
-}
-function togglePassword() {
-  const passwordInput = document.getElementById("password");
-  const type = passwordInput.type === "password" ? "text" : "password";
-  passwordInput.type = type;
-}
 
+  errorMessage.hidden = false;
+});
 
+passwordToggle.addEventListener("click", () => {
+  const isPassword = passwordInput.type === "password";
+  passwordInput.type = isPassword ? "text" : "password";
+  passwordToggle.textContent = isPassword ? "Hide" : "Show";
+  passwordToggle.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
+  passwordToggle.setAttribute("aria-pressed", String(isPassword));
+});
 
-
+loginForm.addEventListener("input", () => {
+  errorMessage.hidden = true;
+});
