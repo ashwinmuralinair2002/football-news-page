@@ -7,6 +7,14 @@ const paragraphs = Array.from(document.querySelectorAll("p"));
 if (!heading || !hero) {
   console.error("Unable to create the article layout: a title or featured image is missing.");
 } else {
+  // Inject Inter font if not already loaded
+  if (!document.querySelector('link[href*="Inter"]')) {
+    const fontLink = document.createElement("link");
+    fontLink.rel = "stylesheet";
+    fontLink.href = "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap";
+    document.head.appendChild(fontLink);
+  }
+
   const header = document.createElement("header");
   header.className = "article-site-top";
   header.innerHTML = `
@@ -23,7 +31,7 @@ if (!heading || !hero) {
     <a href="${siteRoot}index.html#transfers">Transfer News</a>
     <a href="${siteRoot}index.html#ranking">Rankings</a>
     <a href="${siteRoot}index.html#about">About</a>
-    <a class="login-link" href="${siteRoot}login.html">Login</a>`;
+    <button class="article-logout-btn" onclick="articleLogout()">Logout</button>`;
 
   const main = document.createElement("main");
   main.className = "article-main";
@@ -38,7 +46,7 @@ if (!heading || !hero) {
   hero.className = "article-hero";
   const content = document.createElement("div");
   content.className = "article-copy";
-  paragraphs.forEach((paragraph) => content.append(paragraph));
+  paragraphs.forEach((p) => content.append(p));
 
   article.append(heading, meta, hero, content);
   main.append(article);
@@ -56,4 +64,9 @@ if (!heading || !hero) {
   document.querySelectorAll('a[target="_blank"]').forEach((link) => {
     link.rel = "noopener noreferrer";
   });
+}
+
+function articleLogout() {
+  localStorage.removeItem("isLoggedIn");
+  window.location.replace(siteRoot + "login.html");
 }

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
 :root {
   color-scheme: light;
   --ink: #17283e;
@@ -122,6 +124,7 @@ h5 {
 
 section {
   padding-block: clamp(2.5rem, 6vw, 5rem) !important;
+  scroll-margin-top: 56px;
 }
 
 section > .container {
@@ -311,7 +314,7 @@ section h2 {
 
 body > footer {
   padding: 1.5rem 1rem !important;
-  border-top: 1px solid var(--line) !important;
+  border-top: none !important;
   background: var(--navy) !important;
   color: #e8edf4 !important;
   font-size: 0.92rem;
@@ -374,6 +377,22 @@ body > footer a {
 
 .article-nav .login-link {
   color: var(--red);
+}
+
+.article-logout-btn {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--red);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--red);
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.article-logout-btn:hover {
+  background: var(--red);
+  color: #fff;
 }
 
 .article-main {
