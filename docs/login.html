@@ -3,42 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login — Here We Go</title>
+    <meta name="description" content="Login to Here We Go, Fabrizio Romano's football news and transfer updates website.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Style.css">
 </head>
-<body style="background-color: #FAF3E0; color: #000;">
+<body class="login-page">
 
     <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
 
-        <!-- Welcome Text -->
         <div class="text-center mb-4">
-            <h2 class="fw-bold" style="color: #1D3557;">Welcome to Here We Go</h2>
-            <p style="color: #1D3557;" class="mb-0">A website by <strong>Fabrizio Romano</strong></p>
-            <p style="color: #1D3557;" class="fst-italic">Home of the world's biggest transfer news</p>
+            <img class="login-brand" src="./logo.jpg" alt="Here We Go">
+            <h1 class="fw-bold">Welcome to Here We Go</h1>
+            <p class="mb-0">A website by <strong>Fabrizio Romano</strong></p>
+            <p class="fst-italic">Home of the world's biggest transfer news</p>
         </div>
 
-        <!-- Login Card -->
-        <div class="card p-4 border border-dark" style="width: 22rem; background-color: #FAF3E0; color: #1D3557;">
-
-            <h4 class="mb-3 text-center">Please Login</h4>
+        <form class="card" id="login-form">
+            <h2 class="mb-3 text-center">Please Login</h2>
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Please Enter Your Username">
+                <input type="text" class="form-control" id="username" placeholder="Please enter your username" autocomplete="username" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="password" placeholder="Please Enter Your Password">
-                    <span class="input-group-text" onclick="togglePassword()" style="cursor: pointer;">👁️‍🗨️</span>
+                    <input type="password" class="form-control" id="password" placeholder="Please enter your password" autocomplete="current-password" required>
+                    <button class="input-group-text password-toggle" id="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
                 </div>
             </div>
-            <button class="btn btn-primary w-100" onclick="login()">Login</button>
-            <div id="error-msg" class="mt-3 text-light text-center" style="display: none;">Incorrect username or password!!</div>
-        </div>
+            <button class="btn btn-primary w-100" type="submit">Login</button>
+            <p class="demo-note mt-3 mb-0 text-center">Demo only: this client-side login is not secure authentication.</p>
+            <div id="error-msg" class="mt-3 text-center" role="alert" hidden>Incorrect username or password.</div>
+        </form>
     </div>
+
+    <footer class="article-footer">
+        <p>This is a demo website made by <strong>Ashwin Murali Nair</strong></p>
+        <p>Contact: <a href="mailto:ashwinmuralinair2002@gmail.com">ashwinmuralinair2002@gmail.com</a></p>
+    </footer>
 
     <script src="./login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 </html>
-
